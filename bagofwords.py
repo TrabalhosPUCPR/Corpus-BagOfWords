@@ -13,8 +13,11 @@ técnica bag of Words em todo o corpus.
 from corpus import pageSentences
 import pandas as pd
 
+countVector = []
+
 
 def bagofwords():
+    print("Pegando bag of words")
     words = set()
     for array in pageSentences:
         for sentence in array:
@@ -22,13 +25,12 @@ def bagofwords():
                 words.add(word)
     words = list(words)
     print("Total words: ", len(words))
-    vector = []
     for array in pageSentences:
         counts = [0] * len(words)
         for sentence in array:
             for word in sentence.split(" "):
                 counts[words.index(word)] += 1
-        vector.append(counts)
+        countVector.append(counts)
 
-    df = pd.DataFrame(vector, columns=words)
+    df = pd.DataFrame(countVector, columns=words)
     print(df.head())

@@ -32,6 +32,7 @@ def separatetext(t):
 
 
 def corpus():
+    print("Gerando o corpus")
     n = 0
     for url in urls:
         html = requests.get(url)
